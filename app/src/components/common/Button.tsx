@@ -17,7 +17,7 @@ export default function Button({
   ...rest
 }: ButtonProps) {
   const styles = {
-    base: 'inline-flex justify-center items-center gap-2.5 rounded-[10px] font-bold uppercase transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-nowrap',
+    base: 'w-full h-full inline-flex justify-center items-center gap-2.5 rounded-[10px] font-bold uppercase transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-nowrap',
     size: {
       small: 'px-3.5 py-1.5 text-[10px]',
       medium: 'px-6 py-3 text-[10px] rounded-full',
