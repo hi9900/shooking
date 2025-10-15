@@ -37,7 +37,9 @@ export function CartProvider({ children }: CartProviderProps) {
   };
 
   // 장바구니에서 상품을 제거하는 함수
-  const removeFromCart = (productId: number | string) => {};
+  const removeFromCart = (productId: number | string) => {
+    setCart((currentCart) => currentCart.filter((item) => item.id !== productId));
+  };
 
   // Provider를 통해 전달할 값들을 객체로 묶음
   const value = { cart, addToCart, removeFromCart };

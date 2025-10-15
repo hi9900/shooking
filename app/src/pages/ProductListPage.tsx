@@ -36,8 +36,8 @@ export default function ProductListPage() {
         </header>
 
         <ul className="grid grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(184px,1fr))] gap-4">
-          {productsList.map((product, idx) => (
-            <li key={idx}>
+          {productsList.map((product) => (
+            <li key={product.id}>
               <ProductCard {...product} />
             </li>
           ))}
