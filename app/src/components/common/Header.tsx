@@ -1,4 +1,4 @@
-import CartIcon from '@/assets/icons/cartIcon.svg';
+import CartIcon from '@/assets/Icons/cartIcon.svg';
 import { useCart } from '../../contexts/CartContext';
 
 interface HeaderProps {
