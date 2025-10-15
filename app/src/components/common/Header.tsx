@@ -1,4 +1,4 @@
-import ShoppingCartIcon from '@/assets/icons/ShoppingCartIcon.svg';
+import ShoppingCartIcon from '@/assets/icons/shoppingCartIcon.svg';
 import { useCart } from '../../contexts/CartContext';
 
 interface HeaderProps {
