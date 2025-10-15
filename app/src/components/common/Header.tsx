@@ -1,4 +1,4 @@
-import ShoppingCartIcon from '@/assets/icons/shoppingCartIcon.svg';
+import CartIcon from '@/assets/icons/cartIcon.svg';
 import { useCart } from '../../contexts/CartContext';
 
 interface HeaderProps {
@@ -21,7 +21,7 @@ export default function Header({ type = 'main' }: HeaderProps) {
 
         {type === 'main' ? (
           <div className="justify-end relative inline-block">
-            <img src={ShoppingCartIcon} alt="장바구니" className="w-6 h-6" />
+            <img src={CartIcon} alt="장바구니" className="w-6 h-6" />
 
             {cartItemCount > 0 && (
               <div
