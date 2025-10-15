@@ -1,5 +1,5 @@
 import ShoppingCartIcon from '@/assets/icons/ShoppingCartIcon.svg';
-import { useCart } from '@/contexts/CartContext';
+import { useCart } from '../../contexts/CartContext';
 
 interface HeaderProps {
   type?: 'main' | 'sub';
