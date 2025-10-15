@@ -6,9 +6,12 @@
 
 패션 쇼핑몰 상품 목록 페이지 (모바일)
 
-### 사용하게 될 기술:
+### 사용하게 될 기술
 
-`React`
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white">
+<img src="https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white">
+<img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
+<img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
 
 ## 📝 고객 요구사항 정리
 
