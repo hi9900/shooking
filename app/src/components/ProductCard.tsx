@@ -1,5 +1,6 @@
 import { useCart } from '../contexts/CartContext';
 import type { Product } from '../types/product';
+import { formatPrice } from '../utils/formatPrice';
 import Button from './common/Button';
 
 /**
@@ -29,9 +30,7 @@ export default function ProductCard(product: Product) {
         <div className="text-neutral-500 text-xs font-normal leading-none truncate">
           {product.name}
         </div>
-        <div className="text-black text-sm font-medium">
-          {product.price.toLocaleString('ko-kr')}원
-        </div>
+        <div className="text-black text-sm font-medium">{formatPrice(product.price)}</div>
 
         <div className="w-11 h-5">
           <Button
