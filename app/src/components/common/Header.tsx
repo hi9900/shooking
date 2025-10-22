@@ -1,4 +1,5 @@
 import CartIcon from '@/assets/Icons/cartIcon.svg';
+import LogoImage from '@/assets/images/logo.png';
 import { useCart } from '@/contexts/CartContext';
 
 interface HeaderProps {
@@ -15,7 +16,7 @@ export default function Header({ type = 'main' }: HeaderProps) {
     <header className="h-16 p-4 bg-black">
       <div className="container h-full mx-auto flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="shooking logo" className="h-12 w-auto scale-125" />
+          <img src={LogoImage} alt="shooking logo" className="h-12 w-auto scale-125" />
           <h1 className="text-xl font-bold text-white">Shooking</h1>
         </div>
 
