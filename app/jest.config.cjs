@@ -3,7 +3,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   transform: {
     '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest',
-    '\\.(svg|png|jpg|jpeg|gif)$': '<rootDir>/fileTransform.js',
+    '.+\\.(svg|png|jpg|jpeg|gif|webp|avif)$': 'jest-transform-stub',
   },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',

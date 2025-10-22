@@ -21,7 +21,7 @@ export default function ProductCard(product: Product) {
       <div className="w-full flex-grow relative">
         <img
           className="absolute inset-0 w-full h-full object-cover"
-          src={product.productImg}
+          src={product.productImg || undefined}
           alt={`${product.brand}-${product.name}`}
         />
       </div>

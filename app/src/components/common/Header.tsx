@@ -16,13 +16,13 @@ export default function Header({ type = 'main' }: HeaderProps) {
     <header className="h-16 p-4 bg-black">
       <div className="container h-full mx-auto flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <img src={LogoImage} alt="shooking logo" className="h-12 w-auto scale-125" />
+          <img src={LogoImage || undefined} alt="shooking logo" className="h-12 w-auto scale-125" />
           <h1 className="text-xl font-bold text-white">Shooking</h1>
         </div>
 
         {type === 'main' ? (
           <div className="justify-end relative inline-block">
-            <img src={CartIcon} alt="장바구니" className="w-6 h-6" />
+            <img src={CartIcon || undefined} alt="장바구니" className="w-6 h-6" />
 
             {cartItemCount > 0 && (
               <div
