@@ -1,9 +1,9 @@
 import { render, screen, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { CartContext, CartProvider } from '@/contexts/CartContext';
 import type { CartItem, Product } from '@/types/product';
 import ProductCard from './ProductCard';
-import userEvent from '@testing-library/user-event';
 import Header from './common/Header';
 
 // 테스트용 Mock 데이터
@@ -14,15 +14,6 @@ const mockProduct: Product = {
   price: 100000,
   productImg: 'test-image.jpg',
 };
-
-// 테스트용 헬퍼 함수
-// const renderWithProvider = (ui: React.ReactElement, providerProps?: Partial<CartContextType>) => {
-//   return render(
-//     <CartContext>
-//       <ProductCard />
-//     </CartContext>,
-//   );
-// };
 
 describe('ProductCard 컴포넌트', () => {
   // --- 1-4. 렌더링 테스트
