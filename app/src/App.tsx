@@ -1,10 +1,10 @@
 import { CartProvider } from './contexts/CartContext';
-import ProductListPage from './pages/ProductListPage';
+import { Routes } from './pages/Routes';
 
 function App() {
   return (
     <CartProvider>
-      <ProductListPage />
+      <Routes />
     </CartProvider>
   );
 }

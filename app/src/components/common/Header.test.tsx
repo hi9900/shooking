@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 
 import Header from './Header';
 import { CartProvider } from '@/contexts/CartContext';
@@ -6,9 +7,11 @@ import { CartProvider } from '@/contexts/CartContext';
 describe('1-3. Header 컴포넌트 렌더링 테스트', () => {
   const renderHeader = () => {
     return render(
-      <CartProvider>
-        <Header />
-      </CartProvider>,
+      <MemoryRouter>
+        <CartProvider>
+          <Header />
+        </CartProvider>
+      </MemoryRouter>,
     );
   };
 
