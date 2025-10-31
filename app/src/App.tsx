@@ -1,10 +1,13 @@
+import { CardProvider } from './contexts/CardContext';
 import { CartProvider } from './contexts/CartContext';
 import { Routes } from './pages/Routes';
 
 function App() {
   return (
     <CartProvider>
-      <Routes />
+      <CardProvider>
+        <Routes />
+      </CardProvider>
     </CartProvider>
   );
 }

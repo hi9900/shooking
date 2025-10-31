@@ -12,9 +12,11 @@ import {
   formatExpirationDate,
   formatPasswordDigit,
 } from '@/utils/formatCardData';
+import { useCard } from '@/contexts/CardContext';
 
 export default function CardAddPage() {
   const navigate = useNavigate();
+  const { addCard } = useCard();
 
   // 카드 입력 state
   const [cardNumber, handleCardNumberChange] = useFormInput('', formatCardNumber);
@@ -28,11 +30,20 @@ export default function CardAddPage() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.debug({ cardNumber, expirationDate, cardHolderName, cvc, pass1, pass2 });
 
     // TODO: 폼 데이터 유효성 검사
 
-    // TODO: 데이터 저장 로직
+    // 추후 API 호출 하도록 수정
+    // Context 저장
+    const cardItem = {
+      id: crypto.randomUUID(),
+      first8Digits: cardNumber.replace(/\D/g, '').substring(0, 8),
+      expirationDate,
+      cardHolderName,
+    };
+
+    addCard(cardItem);
+    navigate('/cards');
   };
 
   return (
