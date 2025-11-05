@@ -1,6 +1,7 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import ProductListPage from './ProductListPage';
 import CardAddPage from './CardAddPage';
+import CardListPage from './CardListPage';
 
 const router = createBrowserRouter(
   [
@@ -17,11 +18,10 @@ const router = createBrowserRouter(
     //   path: '/products/:id',
     //   element: ,
     // },
-    // TODO: 카드 목록 조회 페이지
-    // {
-    //   path: '/cards',
-    //   element: ,
-    // },
+    {
+      path: '/cards',
+      element: <CardListPage />,
+    },
     {
       path: '/cards/add',
       element: <CardAddPage />,
