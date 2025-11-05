@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import type { Product } from '../types/product';
 import { formatPrice } from '../utils/formatPrice';
@@ -8,12 +9,25 @@ import Button from './common/Button';
  */
 export default function ProductCard(product: Product) {
   const { cart, addToCart } = useCart();
-
+  const navigate = useNavigate();
   // 현재 상품이 장바구니에 있는지 확인
   const isInCart = cart.some((item) => item.id === product.id);
 
-  const handleClick = () => {
-    addToCart(product);
+  const handleClickButton = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const buttonName = e.currentTarget.name;
+
+    switch (buttonName) {
+      case 'buy':
+        navigate('/cards/');
+        break;
+
+      case 'cart':
+        addToCart(product);
+        break;
+
+      default: // do nothing
+        break;
+    }
   };
 
   return (
@@ -32,14 +46,27 @@ export default function ProductCard(product: Product) {
         </div>
         <div className="text-black text-sm font-medium">{formatPrice(product.price)}</div>
 
-        <div className="w-11 h-5">
-          <Button
-            dataSize="medium"
-            dataType="primary"
-            text={isInCart ? '담김!' : '담기'}
-            className={isInCart ? 'bg-zinc-300 text-black font-bold' : ''}
-            onClick={handleClick}
-          />
+        <div className="flex items-center justify-start gap-2">
+          <div className="w-11 h-5">
+            <Button
+              dataSize="medium"
+              dataType="primary"
+              text={isInCart ? '담김!' : '담기'}
+              className={isInCart ? 'bg-zinc-300 text-black font-bold' : ''}
+              onClick={handleClickButton}
+              name="cart"
+            />
+          </div>
+          <div className="w-11 h-5">
+            <Button
+              dataSize="medium"
+              dataType="primary"
+              text="구매"
+              className="bg-yellow-300 text-black"
+              onClick={handleClickButton}
+              name="buy"
+            />
+          </div>
         </div>
       </div>
     </div>
