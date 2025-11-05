@@ -1,5 +1,6 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
 
 import { CartContext, CartProvider } from '@/contexts/CartContext';
 import type { CartItem, Product } from '@/types/product';
@@ -79,10 +80,12 @@ describe('ProductCard 컴포넌트', () => {
     it('IT-05: 상품을 담으면 헤더의 카트 뱃지가 "1"로 변경되어야 한다.', async () => {
       const user = userEvent.setup();
       render(
-        <CartProvider>
-          <Header />
-          <ProductCard {...mockProduct} />
-        </CartProvider>,
+        <MemoryRouter>
+          <CartProvider>
+            <Header />
+            <ProductCard {...mockProduct} />
+          </CartProvider>
+        </MemoryRouter>,
       );
 
       const header = screen.getByRole('banner');

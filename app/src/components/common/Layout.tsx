@@ -1,15 +1,15 @@
-import Header from './Header';
+import Header, { type HeaderProps } from './Header';
 
-interface LayoutProps {
+interface LayoutProps extends HeaderProps {
   children: React.ReactNode;
-  type?: 'main' | 'sub';
+  className?: string;
 }
 
-export default function Layout({ children, type }: LayoutProps) {
+export default function Layout({ children, className = '', ...rest }: LayoutProps) {
   return (
     <div>
-      <Header type={type} />
-      <main>{children}</main>
+      <Header {...rest} />
+      <main className={className}>{children}</main>
     </div>
   );
 }
