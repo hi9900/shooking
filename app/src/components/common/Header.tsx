@@ -4,10 +4,11 @@ import LogoImage from '@/assets/images/logo.png';
 import CartIcon from '@/assets/Icons/cartIcon.svg';
 import CrossIcon from '@/assets/Icons/crossIcon.svg';
 import BackIcon from '@/assets/Icons/backIcon.svg';
+import ArrowLeftIcon from '@/assets/Icons/ArrowLeft.svg';
 import { useCart } from '../../contexts/CartContext';
 
 export interface HeaderProps {
-  type?: 'main' | 'sub';
+  type?: 'main' | 'sub' | 'main2';
   back?: boolean;
   title?: string;
   onCloseClick?: () => void;
@@ -21,7 +22,7 @@ export default function Header({ type = 'main', back = false, title, onCloseClic
   const cartItemCount = cart.length;
 
   return (
-    <header className={`h-16 p-4 ${type === 'main' ? 'bg-black' : 'bg-white'}`}>
+    <header className={`h-16 p-4 ${['main', 'main2'].includes(type) ? 'bg-black' : 'bg-white'}`}>
       <div className="container h-full mx-auto flex justify-between items-center">
         {/* 왼쪽 영역: type에 따라 로고 또는 뒤로가기 버튼 */}
         <div className="flex justify-start">
@@ -36,7 +37,11 @@ export default function Header({ type = 'main', back = false, title, onCloseClic
             </Link>
           ) : back ? (
             <button onClick={() => navigate(-1)} aria-label="뒤로가기" className="w-6">
-              <img src={BackIcon || undefined} alt="뒤로가기" className="w-3.5 h-3.5" />
+              <img
+                src={(type === 'main2' ? ArrowLeftIcon : BackIcon) || undefined}
+                alt="뒤로가기"
+                className="w-3.5 h-3.5"
+              />
             </button>
           ) : (
             <div className="w-6" />

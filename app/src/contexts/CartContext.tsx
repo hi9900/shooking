@@ -5,6 +5,8 @@ interface CartContextType {
   cart: CartItem[];
   addToCart: (product: Product) => void;
   removeFromCart: (productId: number | string) => void;
+  increaseQuantity: (productId: number | string) => void;
+  decreaseQuantity: (productId: number | string) => void;
 }
 
 // 1. Context 생성
@@ -41,8 +43,28 @@ export function CartProvider({ children }: CartProviderProps) {
     setCart((currentCart) => currentCart.filter((item) => item.id !== productId));
   };
 
+  // 상품 수량 증가
+  const increaseQuantity = (productId: number | string) => {
+    setCart((currentCart) =>
+      currentCart.map((item) =>
+        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item,
+      ),
+    );
+  };
+
+  // 상품 수량 감소
+  const decreaseQuantity = (productId: number | string) => {
+    setCart((currentCart) =>
+      currentCart.map((item) =>
+        item.id === productId && item.quantity > 1 // id가 일치하고, 수량이 1보다 클 때만 1 감소
+          ? { ...item, quantity: item.quantity - 1 }
+          : item,
+      ),
+    );
+  };
+
   // Provider를 통해 전달할 값들을 객체로 묶음
-  const value = { cart, addToCart, removeFromCart };
+  const value = { cart, addToCart, removeFromCart, increaseQuantity, decreaseQuantity };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
