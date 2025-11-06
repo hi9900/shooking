@@ -1,17 +1,24 @@
-import { TextEncoder, TextDecoder } from 'util';
 import '@testing-library/jest-dom';
+import { jest } from '@jest/globals';
 
-global.TextEncoder = TextEncoder;
-global.TextDecoder = TextDecoder;
+import { TextEncoder, TextDecoder } from 'util';
 
-jest.mock('react-router-dom', () => ({
-  // 1. react-router-dom의 다른 기능들도 모킹 (필요에 따라)
-  ...jest.requireActual('react-router-dom'),
+if (!globalThis.TextEncoder) {
+  globalThis.TextEncoder = TextEncoder as unknown as typeof globalThis.TextEncoder;
+}
+if (!globalThis.TextDecoder) {
+  globalThis.TextDecoder = TextDecoder as unknown as typeof globalThis.TextDecoder;
+}
 
-  // 2. useNavigate 훅을 가짜 함수로 대체
-  useNavigate: () => jest.fn(),
+const mockedNavigate = jest.fn();
 
-  // 3. (만약 쓴다면) Link 컴포넌트도 가짜 컴포넌트로 대체
-  // Link: ({ children, to }: { children: React.ReactNode, to: string }) =>
-  //   React.createElement('a', { href: to }, children),
-}));
+jest.mock('react-router-dom', () => {
+  const actual = jest.requireActual<typeof import('react-router-dom')>('react-router-dom');
+  return {
+    ...actual,
+    useNavigate: () => mockedNavigate, // 필요하면 테스트에서 import 해서 검사
+    // Link도 필요하면 여기서 가짜 컴포넌트로 대체 가능
+  };
+});
+
+export {};
