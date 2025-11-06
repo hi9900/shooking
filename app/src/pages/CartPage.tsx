@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Layout from '@/components/common/Layout';
 import { useCart } from '@/contexts/CartContext';
 import CartItem from '@/components/CartItem';
+import OrderSummary from '@/components/OrderSummary';
+import Button from '@/components/common/Button';
 
 export default function CartPage() {
   const { cart } = useCart();
@@ -43,6 +45,21 @@ export default function CartPage() {
         {cart.map((item) => (
           <CartItem item={item} />
         ))}
+
+        {cart.length > 0 && (
+          <>
+            <OrderSummary />
+            <div className="h-8" />
+            <Button
+              dataSize="medium"
+              dataType="primary"
+              text="결제하기"
+              className="px-16 py-4 text-xl font-medium font-['Raleway'] leading-5 mb-4"
+              disabled={!cart.length}
+              onClick={() => navigate('/cards')}
+            />
+          </>
+        )}
       </div>
     </Layout>
   );

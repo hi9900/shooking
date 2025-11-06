@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useMemo, useState } from 'react';
 import type { CartItem, Product } from '../types/product';
 
 interface CartContextType {
@@ -7,6 +7,10 @@ interface CartContextType {
   removeFromCart: (productId: number | string) => void;
   increaseQuantity: (productId: number | string) => void;
   decreaseQuantity: (productId: number | string) => void;
+
+  subtotal: number;
+  shipping: number;
+  total: number;
 }
 
 // 1. Context 생성
@@ -63,8 +67,32 @@ export function CartProvider({ children }: CartProviderProps) {
     );
   };
 
+  // 전체 상품 금액 계산
+  const subtotal = useMemo(() => {
+    return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  }, [cart]);
+
+  // 배송비 계산
+  const shipping = useMemo(() => {
+    return subtotal >= 100_000 ? 0 : 3000;
+  }, [subtotal]);
+
+  // 전체 금액 계산
+  const total = useMemo(() => {
+    return subtotal + shipping;
+  }, [subtotal, shipping]);
+
   // Provider를 통해 전달할 값들을 객체로 묶음
-  const value = { cart, addToCart, removeFromCart, increaseQuantity, decreaseQuantity };
+  const value = {
+    cart,
+    addToCart,
+    removeFromCart,
+    increaseQuantity,
+    decreaseQuantity,
+    subtotal,
+    shipping,
+    total,
+  };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
