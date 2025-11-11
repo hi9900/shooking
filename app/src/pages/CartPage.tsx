@@ -43,7 +43,7 @@ export default function CartPage() {
         </div>
 
         {cart.map((item) => (
-          <CartItem item={item} />
+          <CartItem key={item.id} item={item} />
         ))}
 
         {cart.length > 0 && (
