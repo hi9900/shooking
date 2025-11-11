@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import ProductListPage from './ProductListPage';
 import CardAddPage from './CardAddPage';
 import CardListPage from './CardListPage';
+import CartPage from './CartPage';
 
 const router = createBrowserRouter(
   [
@@ -26,11 +27,10 @@ const router = createBrowserRouter(
       path: '/cards/add',
       element: <CardAddPage />,
     },
-    // TODO: 장바구니 목록 조회 페이지
-    // {
-    //   path: '/cart',
-    //   element: ,
-    // },
+    {
+      path: '/cart',
+      element: <CartPage />,
+    },
     {
       path: '*',
       element: <Navigate to="/products" replace={true} />,
