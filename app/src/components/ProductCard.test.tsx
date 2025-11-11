@@ -65,6 +65,11 @@ describe('ProductCard 컴포넌트', () => {
         cart: mockCart,
         addToCart: jest.fn(),
         removeFromCart: jest.fn(),
+        increaseQuantity: jest.fn(),
+        decreaseQuantity: jest.fn(),
+        subtotal: 0,
+        shipping: 0,
+        total: 0,
       };
 
       render(
